@@ -1,274 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LuxEstate - Premium Real Estate</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darna Properties | Premium Tunisian Real Estate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --tesla-black: #171a20;
+            --tesla-grey: #393c41;
+            --tesla-white: #ffffff;
+            --tesla-blue: #3e6ae1;
+            --transition: all 0.3s cubic-bezier(0.5, 0, 0, 0.75);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            color: var(--tesla-black);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--tesla-black);
+            font-size: 1.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--tesla-black);
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hero Sections */
+        .section {
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 120px 20px 80px;
+            scroll-snap-align: start;
+        }
+
+        .content {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .content p {
+            font-size: 0.9rem;
+            color: var(--tesla-grey);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .btn {
+            width: 256px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .btn-dark {
+            background-color: rgba(23, 26, 32, 0.8);
+            color: white;
+        }
+
+        .btn-light {
+            background-color: rgba(255, 255, 255, 0.65);
+            color: var(--tesla-grey);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Full page scroll */
+        .container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar">
+        <a href="#" class="nav-logo">DARNA PROPERTIES</a>
+        <ul class="nav-menu">
+            <li><a href="#">Villas</a></li>
+            <li><a href="#">Apartments</a></li>
+            <li><a href="#">Land</a></li>
+            <li><a href="#">Commercial</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="#" class="nav-menu">Account</a>
+            <a href="#" class="nav-menu">Menu</a>
+        </div>
+    </nav>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <i class="fas fa-building"></i> LuxEstate
-      </a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="properties.html">Properties</a></li>
-        <li><a href="property-detail.html">For Sale</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="properties.html" class="btn btn-outline">Browse</a>
-        <a href="#" class="nav-wishlist" id="wishlistBtn">
-          <i class="fas fa-heart"></i>
-          <span class="wishlist-count" id="wishlistCount">0</span>
-        </a>
-        <button class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <span class="hero-tag">Premium Real Estate</span>
-      <h1>Find Your Dream <span class="highlight">Property</span></h1>
-      <p>Discover luxury homes, modern apartments, and prime commercial spaces across the globe.</p>
-      <div class="search-bar">
-        <div class="search-input-group">
-          <i class="fas fa-map-marker-alt"></i>
-          <input type="text" id="heroSearch" placeholder="City, neighborhood, or address..." />
-        </div>
-        <select id="heroType">
-          <option value="">All Types</option>
-          <option value="house">House</option>
-          <option value="apartment">Apartment</option>
-          <option value="villa">Villa</option>
-          <option value="commercial">Commercial</option>
-        </select>
-        <select id="heroPrice">
-          <option value="">Any Price</option>
-          <option value="500000">Under $500K</option>
-          <option value="1000000">Under $1M</option>
-          <option value="2000000">Under $2M</option>
-          <option value="5000000">Under $5M</option>
-        </select>
-        <button class="btn btn-primary" onclick="searchHero()">Search</button>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>2,400+</strong><span>Properties</span>
-        </div>
-        <div class="stat">
-          <strong>1,200+</strong><span>Happy Clients</span>
-        </div>
-        <div class="stat">
-          <strong>98%</strong><span>Satisfaction</span>
-        </div>
-        <div class="stat">
-          <strong>15+</strong><span>Years Experience</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED PROPERTIES -->
-  <section class="section featured-properties">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Handpicked For You</span>
-        <h2>Featured Properties</h2>
-        <p>Explore our curated selection of premium real estate listings</p>
-      </div>
-      <div class="filter-tabs">
-        <button class="filter-tab active" data-filter="all">All</button>
-        <button class="filter-tab" data-filter="house">Houses</button>
-        <button class="filter-tab" data-filter="apartment">Apartments</button>
-        <button class="filter-tab" data-filter="villa">Villas</button>
-        <button class="filter-tab" data-filter="commercial">Commercial</button>
-      </div>
-      <div class="properties-grid" id="featuredGrid"></div>
-      <div class="section-cta">
-        <a href="properties.html" class="btn btn-primary">View All Properties</a>
-      </div>
-    </div>
-  </section>
+        <!-- Section 1 -->
+        <section class="section" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80')">
+            <div class="content">
+                <h1>The New Standard of Living</h1>
+                <p>Experience luxury in the heart of Tunisia</p>
+            </div>
+            <div class="buttons">
+                <a href="#" class="btn btn-dark">View Properties</a>
+                <a href="#" class="btn btn-light">Contact Sales</a>
+            </div>
+        </section>
 
-  <!-- WHY CHOOSE US -->
-  <section class="section why-us">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Why LuxEstate</span>
-        <h2>The Smart Way to Buy Real Estate</h2>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Trusted & Verified</h3>
-          <p>Every listing is verified by our expert team ensuring authenticity and accuracy.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-search-dollar"></i></div>
-          <h3>Best Price Guarantee</h3>
-          <p>We negotiate the best market prices so you get maximum value for your investment.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-headset"></i></div>
-          <h3>24/7 Support</h3>
-          <p>Our dedicated team is always available to guide you through every step.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-file-contract"></i></div>
-          <h3>Easy Documentation</h3>
-          <p>Streamlined paperwork and legal support to make transactions smooth.</p>
-        </div>
-      </div>
+        <!-- Section 2 -->
+        <section class="section" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80')">
+            <div class="content">
+                <h1>Coastal Villas</h1>
+                <p>Breathtaking views of the Mediterranean</p>
+            </div>
+            <div class="buttons">
+                <a href="#" class="btn btn-dark">Explore Sousse</a>
+                <a href="#" class="btn btn-light">Explore Hammamet</a>
+            </div>
+        </section>
     </div>
-  </section>
-
-  <!-- STATS BANNER -->
-  <section class="stats-banner">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <i class="fas fa-home"></i>
-          <strong>2,400+</strong>
-          <span>Properties Listed</span>
-        </div>
-        <div class="stat-item">
-          <i class="fas fa-users"></i>
-          <strong>1,200+</strong>
-          <span>Happy Clients</span>
-        </div>
-        <div class="stat-item">
-          <i class="fas fa-city"></i>
-          <strong>50+</strong>
-          <span>Cities Covered</span>
-        </div>
-        <div class="stat-item">
-          <i class="fas fa-award"></i>
-          <strong>15+</strong>
-          <span>Years Experience</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Client Stories</span>
-        <h2>What Our Clients Say</h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p>"LuxEstate helped us find our perfect family home. The process was seamless and the team was incredibly professional."</p>
-          <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/50?img=1" alt="Sarah M." />
-            <div><strong>Sarah Mitchell</strong><span>Homeowner, New York</span></div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p>"Exceptional service! Found my dream villa in Dubai within weeks. Highly recommend LuxEstate to anyone looking for premium properties."</p>
-          <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/50?img=3" alt="James R." />
-            <div><strong>James Rodriguez</strong><span>Investor, Miami</span></div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-          <p>"The virtual tours feature saved me so much time. I bought my apartment without even visiting in person - it was exactly as described!"</p>
-          <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/50?img=5" alt="Amira K." />
-            <div><strong>Amira Khalil</strong><span>Buyer, London</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <div class="container">
-      <div class="newsletter-content">
-        <h2>Stay Updated with Latest Properties</h2>
-        <p>Subscribe to get notified about new listings, market trends, and exclusive deals.</p>
-        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-          <input type="email" placeholder="Enter your email address" required />
-          <button type="submit" class="btn btn-primary">Subscribe</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo"><i class="fas fa-building"></i> LuxEstate</a>
-          <p>Your trusted partner in finding premium real estate across the globe.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="properties.html">Properties</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Property Types</h4>
-          <ul>
-            <li><a href="properties.html?type=house">Houses</a></li>
-            <li><a href="properties.html?type=apartment">Apartments</a></li>
-            <li><a href="properties.html?type=villa">Villas</a></li>
-            <li><a href="properties.html?type=commercial">Commercial</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact Us</h4>
-          <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Ave, Dubai, UAE</p>
-          <p><i class="fas fa-phone"></i> +971 50 123 4567</p>
-          <p><i class="fas fa-envelope"></i> info@luxestate.com</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 LuxEstate. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- WISHLIST SIDEBAR -->
-  <div class="wishlist-sidebar" id="wishlistSidebar">
-    <div class="wishlist-header">
-      <h3><i class="fas fa-heart"></i> My Wishlist</h3>
-      <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="wishlist-items" id="wishlistItems">
-      <p class="empty-wishlist">No properties saved yet.</p>
-    </div>
-  </div>
-  <div class="overlay" id="sidebarOverlay" onclick="closeWishlist()"></div>
-
-  <script src="js/properties.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
